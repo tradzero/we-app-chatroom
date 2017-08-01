@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="chat">
+
+    </view>
+    <view class="messageBar">
+        <input type="text" placeholder="输入消息" 
+            focus="true" confirm-type="send"></input>
+        <button type="primary" size="mini">发送</button>
+    </view>
+    <view class="toolbar"></view>
+</view>
