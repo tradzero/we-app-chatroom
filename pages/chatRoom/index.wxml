@@ -1,11 +1,32 @@
 <view class="container">
-    <view class="chat">
-
+    <view class="header title">
+        <icon type="clear" class="left-icon"></icon>
+        <text>{{ user.self }}</text>
+        <icon type="info" class="right-icon"></icon>
     </view>
-    <view class="messageBar">
-        <input type="text" placeholder="输入消息" 
-            focus="true" confirm-type="send"></input>
-        <button type="primary" size="mini">发送</button>
+    <scroll-view scroll-y="true" class="chatHistory">
+        <view class="message self-message">
+            <text class="chatText self-text">说的话</text>
+            <image src="http://u.thsi.cn/fileupload/data/Flashcms/2017/368009872_0ba435101f2cbe1922ccf1a7c2574736.jpg"
+                   class="chatAvatar"></image>
+        </view>
+        <view class="message other-message">
+            <image src="http://u.thsi.cn/fileupload/data/Flashcms/2017/368009872_0ba435101f2cbe1922ccf1a7c2574736.jpg" 
+                   class="chatAvatar"></image>
+            <text class="chatText self-text">说的话1</text>
+        </view>
+    </scroll-view>
+     <view class="messageBar">
+        <input type="text"
+            placeholder="输入消息" 
+            focus="true"
+            confirm-type="send"
+            bindinput="bindInput"
+            value="{{ currentMessage }}"></input>
+        <button type="primary"
+            size="mini"
+            bindtap="sendMsg">发送</button>
     </view>
-    <view class="toolbar"></view>
+    <view class="toolbar">
+    </view>
 </view>
