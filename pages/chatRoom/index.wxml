@@ -1,3 +1,6 @@
+<import src="templates/selfMessages/message.wxml"></import>
+<import src="templates/otherMessages/message.wxml"></import>
+
 <view class="container">
     <view class="header title">
         <icon type="clear" class="left-icon"></icon>
@@ -5,16 +8,11 @@
         <icon type="info" class="right-icon"></icon>
     </view>
     <scroll-view scroll-y="true" class="chatHistory">
-        <view class="message self-message">
-            <text class="chatText self-text">说的话</text>
-            <image src="http://u.thsi.cn/fileupload/data/Flashcms/2017/368009872_0ba435101f2cbe1922ccf1a7c2574736.jpg"
-                   class="chatAvatar"></image>
+        <view wx:for="{{ messages.self }}" wx:for-index="idx" wx:key="*this" wx:for-item="item">
+            <template is="selfMessage" data="{{ message:item, avatar: 'http://u.thsi.cn/fileupload/data/Flashcms/2017/368009872_0ba435101f2cbe1922ccf1a7c2574736.jpg' }}">
+            </template>
         </view>
-        <view class="message other-message">
-            <image src="http://u.thsi.cn/fileupload/data/Flashcms/2017/368009872_0ba435101f2cbe1922ccf1a7c2574736.jpg" 
-                   class="chatAvatar"></image>
-            <text class="chatText self-text">说的话1</text>
-        </view>
+
     </scroll-view>
      <view class="messageBar">
         <input type="text"

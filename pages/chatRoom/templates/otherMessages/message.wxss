@@ -1,0 +1,3 @@
+.other-message {
+    justify-content: flex-start;
+}

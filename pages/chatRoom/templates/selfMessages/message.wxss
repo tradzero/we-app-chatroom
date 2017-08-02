@@ -1,0 +1,3 @@
+.self-message {
+    justify-content: flex-end;
+}

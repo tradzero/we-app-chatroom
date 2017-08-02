@@ -59,7 +59,8 @@ Page({
             _this.setData({
                 connect: false
             });
-        })
+        });
+
         wx.onSocketMessage(function(data) {
             console.log(data);
         });

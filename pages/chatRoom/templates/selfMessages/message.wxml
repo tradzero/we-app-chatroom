@@ -1,0 +1,6 @@
+<template name="selfMessage">
+    <view class="message self-message">
+        <text class="chatText self-text">{{ message }}</text>
+        <image src="{{ avatar }}" class="chatAvatar"></image>
+    </view>
+</template>
