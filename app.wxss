@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import 'wa-ui.wxss';
+
 .container {
     height: 100%;
     min-height: 100%;
