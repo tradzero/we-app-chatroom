@@ -2,6 +2,7 @@
 @import './templates/otherMessages/message.wxss';
 .container {
     padding: 0;
+    justify-content: flex-start;
 }
 
 .header {
