@@ -3,16 +3,20 @@
 
 <view class="container">
     <view class="header title">
-        <icon type="clear" class="left-icon"></icon>
-        <text>{{ user.self }}</text>
-        <icon type="info" class="right-icon"></icon>
+        <icon type="clear" class="left-icon" color="white" bindtap="back"></icon>
+        <text class="title">{{ user.self.nickName }}</text>
+        <icon type="info" class="right-icon" color="white" bindtap="getNumber"></icon>
     </view>
     <scroll-view scroll-y="true" class="chatHistory">
         <view wx:for="{{ messages.self }}" wx:for-index="idx" wx:key="*this" wx:for-item="item">
-            <template is="selfMessage" data="{{ message:item, avatar: 'http://u.thsi.cn/fileupload/data/Flashcms/2017/368009872_0ba435101f2cbe1922ccf1a7c2574736.jpg' }}">
+            <template is="selfMessage" 
+                data="{{ message:item, avatar: user.self.avatarUrl }}">
             </template>
         </view>
-
+        <view wx:for="{{ messages.other }}" wx:for-index="idx" wx:key="*this" wx:for-item="item">
+            <template is="otherMessage" data="{{ message:item.message, avatar: user.other[item.client].avatarUrl }}">
+            </template>
+        </view>
     </scroll-view>
      <view class="messageBar">
         <input type="text"

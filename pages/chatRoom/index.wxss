@@ -1,6 +1,5 @@
 @import './templates/selfMessages/message.wxss';
 @import './templates/otherMessages/message.wxss';
-
 .container {
     padding: 0;
 }
@@ -14,6 +13,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.title {
+    color: #ffffff;
 }
 
 .left-icon {
@@ -41,6 +44,12 @@
     border-radius: 50%;
     width: 100rpx;
     height: 100rpx;
+}
+
+.chatText {
+    align-self: center;
+    margin-right: 20rpx;
+    margin-left: 20rpx;
 }
 
 .messageBar {
