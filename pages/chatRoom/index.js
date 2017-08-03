@@ -6,7 +6,7 @@ Page({
         currentMessage: '',
         user: {
             self: {},
-            other: [],
+            other: {},
         },
         messages: {
             self: [],
@@ -130,10 +130,12 @@ Page({
         }
     },
     receiveMsg: function (message, client, userInfo) {
-        var messageBody = this.data.messages.other || [];
+        var messageBody = this.data.messages.other;
         messageBody.push({ message, client });
         if (this.data.user.other[client] == undefined) {
-            this.setData({'user.other': { [client]: userInfo } });
+            var userList = this.data.user.other || {};
+            userList[client] = userInfo;
+            this.setData({ 'user.other': userList });
         }
         this.setData({
             'messages.other': messageBody
