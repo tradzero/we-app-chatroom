@@ -24,10 +24,8 @@
             focus="true"
             confirm-type="send"
             bindinput="bindInput"
+            bindconfirm="sendMsg"
             value="{{ currentMessage }}"></input>
-        <button type="primary"
-            size="mini"
-            bindtap="sendMsg">发送</button>
     </view>
     <view class="toolbar">
     </view>

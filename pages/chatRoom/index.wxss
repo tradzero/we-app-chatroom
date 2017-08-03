@@ -74,9 +74,3 @@
     font-size: 0.75rem;
     min-width: 14rem;
 }
-
-.messageBar > button {
-    height: inherit;
-    margin-left: 20rpx;
-    margin-right: 10rpx;
-}
