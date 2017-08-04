@@ -8,15 +8,6 @@
         <icon type="info" class="right-icon" color="white" bindtap="getNumber"></icon>
     </view>
     <scroll-view scroll-y="true" scroll-top="50" class="chatHistory">
-        <!-- <view wx:for="{{ messages.self }}" wx:for-index="idx" wx:key="*this" wx:for-item="item">
-            <template is="selfMessage" 
-                data="{{ message:item, avatar: user.self.avatarUrl }}">
-            </template>
-        </view>
-        <view wx:for="{{ messages.other }}" wx:for-index="idx" wx:key="*this" wx:for-item="item">
-            <template is="otherMessage" data="{{ message:item.message, avatar: user.other[item.client].avatarUrl }}">
-            </template>
-        </view> -->
         <view wx:for="{{ messages }}" wx:key="*this">
              <template is="selfMessage"
                       wx:if="{{ item.self }}"
