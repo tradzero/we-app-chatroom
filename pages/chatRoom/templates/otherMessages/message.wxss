@@ -1,3 +1,25 @@
 .other-message {
     justify-content: flex-start;
 }
+
+.other-text {
+    display: inline-block;
+    position: relative;
+    background-color: rgb(209, 215, 221);
+    padding: 15rpx 20rpx;
+    border: 0px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.other-text::before {
+    content: '';
+    display: block;
+    width: 0.75em;
+    height: 0.5em;
+    position: absolute;
+    left: -15rpx;
+    bottom: -5rpx;
+    border-right: 0.5em solid rgb(209, 215, 221);
+    border-bottom-right-radius: 100%;
+    z-index: 2;
+}

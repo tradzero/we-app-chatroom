@@ -29,6 +29,7 @@
 }
 
 .chatHistory {
+    padding: 15rpx;
     background-color: rgb(250, 248, 253);
     height: 85%;
     display: flex;
@@ -37,7 +38,7 @@
 }
 
 .message {
-    width: 100%;
+    padding: 0 20rpx;
     display: flex;
     flex-direction: row;
 }
@@ -46,12 +47,14 @@
     border-radius: 50%;
     width: 100rpx;
     height: 100rpx;
+    min-width: 100rpx;
 }
 
 .chatText {
     align-self: center;
-    margin-right: 20rpx;
+    margin-right: 20rpx; 
     margin-left: 20rpx;
+    word-break: break-all;
 }
 
 .messageBar {

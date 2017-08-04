@@ -1,6 +1,6 @@
 <template name="otherMessage">
     <view class="message other-message">
         <image src="{{ avatar }}" class="chatAvatar"></image>
-        <text class="chatText self-text">{{ message }}</text>
+        <text class="chatText other-text">{{ message }}</text>
     </view>
 </template>
