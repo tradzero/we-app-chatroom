@@ -8,10 +8,7 @@ Page({
             self: {},
             other: {},
         },
-        messages: {
-            self: [],
-            other: [],
-        }
+        messages: [],
     },
     onLoad: function () {
         console.log(app.globalData.userInfo);
@@ -35,7 +32,7 @@ Page({
             url: 'ws://192.168.1.108:8282',
         });
 
-        wx.onSocketOpen(function(res) {
+        wx.onSocketOpen(function (res) {
             wx.hideLoading();
             wx.showToast({
                 title: '连接服务器成功',
@@ -45,8 +42,8 @@ Page({
                 connect: true
             });
         });
-        
-        wx.onSocketError(function(res) {
+
+        wx.onSocketError(function (res) {
             wx.hideLoading();
             wx.showModal({
                 title: '错误',
@@ -57,7 +54,7 @@ Page({
             });
         });
 
-        wx.onSocketClose(function() {
+        wx.onSocketClose(function () {
             wx.showModal({
                 title: '连接关闭',
                 content: '服务器已经关闭了您的连接',
@@ -67,7 +64,7 @@ Page({
             });
         });
 
-        wx.onSocketMessage(function(data) {
+        wx.onSocketMessage(function (data) {
             var body = JSON.parse(data.data);
             console.log(body);
             switch (body.type) {
@@ -100,17 +97,14 @@ Page({
             var messageBody = this.getMessageBody(message);
             wx.sendSocketMessage({
                 data: JSON.stringify(messageBody),
-                success: function(res){
-                    var messageBody = _this.data.messages.self;
-                    messageBody.push(message);
-                    _this.setData({
-                        'messages.self': messageBody
-                    });
+                success: function (res) {
+                    var messageBody = {message: message};
+                    _this.pushMsg('self', messageBody);
                 },
-                fail: function(res) {
+                fail: function (res) {
                     console.log(res);
                 },
-                complete: function() {
+                complete: function () {
                     _this.setData({
                         currentMessage: '',
                     });
@@ -123,23 +117,20 @@ Page({
             var messageBody = this.getNumberBody();
             wx.sendSocketMessage({
                 data: JSON.stringify(messageBody),
-                success: function(res){
+                success: function (res) {
                     console.log(res);
                 },
             })
         }
     },
     receiveMsg: function (message, client, userInfo) {
-        var messageBody = this.data.messages.other;
-        messageBody.push({ message, client });
+        var messageBody = {message, client};
         if (this.data.user.other[client] == undefined) {
             var userList = this.data.user.other || {};
             userList[client] = userInfo;
             this.setData({ 'user.other': userList });
         }
-        this.setData({
-            'messages.other': messageBody
-        });
+        this.pushMsg('others', messageBody);
     },
     getMessageBody: function (message) {
         var messageBody = {
@@ -168,5 +159,12 @@ Page({
             title: '提示',
             content: `在线人数${number}`,
         });
-    }
+    },
+    pushMsg: function (side, body) {
+        var tempateBody = this.data.messages || [];
+        tempateBody.push({ [side]: body });
+        this.setData({
+            messages: tempateBody,
+        });
+    },
 });
