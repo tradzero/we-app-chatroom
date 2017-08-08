@@ -1,4 +1,5 @@
 var app = getApp();
+var config = require('../../config.js');
 
 Page({
     data: {
@@ -9,11 +10,12 @@ Page({
             other: {},
         },
         messages: [],
+        deviceHeight: 0,
     },
     onLoad: function () {
         console.log(app.globalData.userInfo);
         this.setData({
-            'user.self': app.globalData.userInfo,
+            'user.self': app.globalData.userInfo
         });
     },
     onReady: function () {
@@ -29,7 +31,7 @@ Page({
         });
 
         wx.connectSocket({
-            url: 'wss://api.drakframe.com',
+            url: config.config.wsurl,
         });
 
         wx.onSocketOpen(function (res) {
