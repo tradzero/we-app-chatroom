@@ -7,7 +7,7 @@
         <text class="title">{{ user.self.nickName }}</text>
         <icon type="info" class="right-icon" color="white" bindtap="getNumber"></icon>
     </view>
-    <scroll-view scroll-y="true" scroll-top="50" class="chatHistory">
+    <scroll-view scroll-y="true" class="chatHistory">
         <view wx:for="{{ messages }}" wx:key="*this">
              <template is="selfMessage"
                       wx:if="{{ item.self }}"
