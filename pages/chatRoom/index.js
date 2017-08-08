@@ -29,7 +29,7 @@ Page({
         });
 
         wx.connectSocket({
-            url: 'ws://192.168.1.108:8282',
+            url: 'wss://api.drakframe.com',
         });
 
         wx.onSocketOpen(function (res) {
@@ -79,6 +79,9 @@ Page({
                     break;
                 case 'number':
                     _this.showNumber(body.message);
+                    break;
+                case 'ping':
+                    _this.sendPong();
                     break;
                 default:
                     break;
@@ -167,4 +170,13 @@ Page({
             messages: tempateBody,
         });
     },
+    // 回应心跳检测
+    sendPong: function () {
+        var body = {
+            type: 'pong',
+        }
+        wx.sendSocketMessage({
+            data: JSON.stringify(body),
+        })
+    }
 });
