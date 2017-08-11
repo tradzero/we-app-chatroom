@@ -93,6 +93,12 @@ Page({
             }
         });
     },
+    onUnload: function () {
+        this.setData({
+            connect: false
+        });
+        wx.closeSocket();
+    },
     bindInput: function (e) {
         this.setData({
             currentMessage: e.detail.value,
