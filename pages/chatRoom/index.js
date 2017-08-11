@@ -56,16 +56,19 @@ Page({
             });
         });
 
+        
         wx.onSocketClose(function () {
-            wx.showModal({
-                title: '连接关闭',
-                content: '服务器已经关闭了您的连接',
-            });
-            _this.setData({
-                connect: false
-            });
+            if (_this.data.connect) {
+                wx.showModal({
+                    title: '连接关闭',
+                    content: '服务器已经关闭了您的连接',
+                });
+                _this.setData({
+                    connect: false
+                });
+            }
         });
-
+    
         wx.onSocketMessage(function (data) {
             var body = JSON.parse(data.data);
             console.log(body);
